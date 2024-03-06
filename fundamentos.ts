@@ -13,6 +13,17 @@ let falso: boolean = false
 falso = true
 verdade = false
 
+// ANNOTATION e INFERENCE
+let minhaVariavel: string = 'Texto' //ANNOTATION
+let meuArray = [1,2,3,4,5,6,7,8,9] //INFERENCE
+
+minhaVariavel = 'Junior'
+meuArray.push(10)
+
+let multiploArray: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+multiploArray.push(10)
+
+
 let num: number[] = [1, 3, 5, 7]
 let letras: string[] = ['a', 'b', 'c']
 let misto: any[] = ['a', 1, 'c', true]
@@ -38,7 +49,7 @@ function coordenadas(cord: {x: number, y: number}) {
     console.log(`A coordenada Y é: ${cord.y}`)
 }
 
-const minhaCoordenada = {x: 329, y:72.6}
+const minhaCoordenada = {x: 718, y:115.6}
 coordenadas(minhaCoordenada)
 
 function mostreNumeros (a: number, b: number, c?: number) {
@@ -84,7 +95,7 @@ function userDetails(user: objectAlias) {
     console.log(`Idade: ${user.valor}`)
 }
 
-userDetails({name: 'Paulo', idade: 26})
+userDetails({tipo: 'Paulo', valor: 26})
 
 // INTERFACES
 interface Coords {
@@ -154,3 +165,29 @@ showPet(gatinhoDaAlice)
 interface myPet {
     tipoRacao: string
 }
+
+// FUNÇÃO SEM RETORNO
+function semRetorno(): void {
+    console.log('Sou sem retorno!')
+}
+
+semRetorno()
+
+// LITERAL TYPES
+let teste: 'admin' | 'gerente'
+
+teste = 'gerente'
+
+// TYPE UNKNOW
+function algumaCoisa(x: unknown): void {
+    if (Array.isArray(x)) {
+        console.log(x[0])
+    }
+}
+
+algumaCoisa('10')
+algumaCoisa(true)
+
+
+
+
