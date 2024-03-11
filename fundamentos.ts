@@ -61,7 +61,7 @@ function mostreNumeros (a: number, b: number, c?: number) {
 mostreNumeros(1,2,3)
 mostreNumeros(4,5)
 
-function validaOpcao(opcao1: string | number, opcao2: number | boolean) {
+function validaOpcao(opcao1: string | number, opcao2: number | boolean ) {
     console.log(opcao1, opcao2)
 }
 
@@ -188,6 +188,81 @@ function algumaCoisa(x: unknown): void {
 algumaCoisa('10')
 algumaCoisa(true)
 
+// NEVER
+function showError(msgError: string): never {
+    throw new Error(msgError)
+}
 
+// showError('Deu arro aqui!')
 
+// SPREAD e REST no JS
+let umArray = [1,2,3,4,5]
+let umNovoArray = [...umArray,6,7,8,9,10]
+console.log(umNovoArray)
 
+function umaFuncao(...a: number[]) {
+    console.log(a)
+}
+
+umaFuncao(1,2,3,4,5,6)
+umaFuncao(1,2)
+umaFuncao(1)
+// umaFuncao('1') não funciona
+
+// DESTRUCTURING COM PARAMETROS DE OBJETOS
+
+function showProdutos({nome, preco}: {nome: string, preco: number}): string {
+    return `O nome do produto é: ${nome} e o preço dele é: ${preco}`
+}
+
+const camisa = {
+    nome: 'Camisa de Algodão',
+    preco: 39.90
+}
+
+console.log(showProdutos(camisa))
+
+// READONLY
+const meuReadonly: readonly string[][] = [['Paulo']]
+
+// meuReadonly.push(['Junior']) não funciona
+// obs.: toda interface deve iniciar com letra Maiuscula.
+interface Carro {
+    readonly marca: string,
+    modelo: string,
+    qtdPneus: number,
+}
+
+const fusca: Carro = {
+    marca: 'VW',
+    modelo: 'fusca 1600',
+    qtdPneus: 4,
+}
+
+// fusca.marca = 'Ford'
+console.log(fusca.marca)
+
+// OPCIONAL EM INTERFACES
+interface NewUser {
+    email: string
+    senha: string | number
+    regra?: string
+}
+
+function showUserDetails(newUser: NewUser): string {
+    return `Seu e-mail é ${newUser.email} sua senha é ${newUser.senha} e sua regra de acesso é: ${ newUser.regra ? newUser.regra : 'SEM REGRA' }`
+}
+
+const user10: NewUser = {
+    email: 'jota@teste.com.br',
+    senha: 123456,
+    regra: 'gerente'
+}
+
+const user11: NewUser = {
+    email: 'convidado@teste.com.br',
+    senha: 'sem senha',
+}
+
+console.log(showUserDetails(user10))
+console.log(showUserDetails(user11))

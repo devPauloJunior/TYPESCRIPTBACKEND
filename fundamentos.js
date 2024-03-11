@@ -103,3 +103,51 @@ function algumaCoisa(x) {
 }
 algumaCoisa('10');
 algumaCoisa(true);
+// NEVER
+function showError(msgError) {
+    throw new Error(msgError);
+}
+// showError('Deu arro aqui!')
+// SPREAD e REST no JS
+let umArray = [1, 2, 3, 4, 5];
+let umNovoArray = [...umArray, 6, 7, 8, 9, 10];
+console.log(umNovoArray);
+function umaFuncao(...a) {
+    console.log(a);
+}
+umaFuncao(1, 2, 3, 4, 5, 6);
+umaFuncao(1, 2);
+umaFuncao(1);
+// umaFuncao('1') não funciona
+// DESTRUCTURING COM PARAMETROS DE OBJETOS
+function showProdutos({ nome, preco }) {
+    return `O nome do produto é: ${nome} e o preço dele é: ${preco}`;
+}
+const camisa = {
+    nome: 'Camisa de Algodão',
+    preco: 39.90
+};
+console.log(showProdutos(camisa));
+// READONLY
+const meuReadonly = [['Paulo']];
+const fusca = {
+    marca: 'VW',
+    modelo: 'fusca 1600',
+    qtdPneus: 4,
+};
+// fusca.marca = 'Ford'
+console.log(fusca.marca);
+function showUserDetails(newUser) {
+    return `Seu e-mail é ${newUser.email} sua senha é ${newUser.senha} e sua regra de acesso é: ${newUser.regra ? newUser.regra : 'SEM REGRA'}`;
+}
+const user10 = {
+    email: 'jota@teste.com.br',
+    senha: 123456,
+    regra: 'gerente'
+};
+const user11 = {
+    email: 'convidado@teste.com.br',
+    senha: 'sem senha',
+};
+console.log(showUserDetails(user10));
+console.log(showUserDetails(user11));
